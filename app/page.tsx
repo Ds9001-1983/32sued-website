@@ -1,27 +1,20 @@
 import Hero from '@/components/sections/Hero';
 import OpeningHoursBar from '@/components/sections/OpeningHoursBar';
-import StoryTeaser from '@/components/sections/StoryTeaser';
-import WeeklyMenu from '@/components/sections/WeeklyMenu';
+import AboutSection from '@/components/sections/AboutSection';
+import BestSelling from '@/components/sections/BestSelling';
 import CateringTeaser from '@/components/sections/CateringTeaser';
+import Testimonials from '@/components/sections/Testimonials';
 import ContactSection from '@/components/sections/ContactSection';
 
 export default function HomePage() {
   return (
     <>
-      <Hero
-        image="/images/gallery/interior-1.jpg"
-        imageAlt="Restaurant 32Süd – Industrielles Ambiente auf dem Steinmüllergelände Gummersbach"
-        title="32Süd"
-        subtitle="Wo Industriegeschichte auf moderne bergische Küche trifft."
-        showLogo
-        showCTA
-        overlay="dark"
-        height="full"
-      />
+      <Hero />
       <OpeningHoursBar />
-      <StoryTeaser />
-      <WeeklyMenu />
+      <AboutSection />
+      <BestSelling />
       <CateringTeaser />
+      <Testimonials />
       <ContactSection />
     </>
   );

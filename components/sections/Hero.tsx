@@ -1,150 +1,135 @@
 'use client';
 
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Button from '@/components/ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { HERO_IMAGES, CONTACT } from '@/lib/constants';
 
-interface HeroProps {
-  image: string;
-  imageAlt: string;
-  title?: string;
-  subtitle?: string;
-  showLogo?: boolean;
-  showCTA?: boolean;
-  overlay?: 'dark' | 'medium' | 'light';
-  height?: 'full' | 'large' | 'medium';
-}
+export default function Hero() {
+  const [current, setCurrent] = useState(0);
 
-export default function Hero({
-  image,
-  imageAlt,
-  title,
-  subtitle,
-  showLogo = false,
-  showCTA = false,
-  overlay = 'dark',
-  height = 'full',
-}: HeroProps) {
-  const overlayOpacity = {
-    dark: 'bg-black/60',
-    medium: 'bg-black/45',
-    light: 'bg-black/30',
-  };
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % HERO_IMAGES.length);
+  }, []);
 
-  const heightClass = {
-    full: 'h-screen',
-    large: 'h-[80vh]',
-    medium: 'h-[60vh]',
-  };
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + HERO_IMAGES.length) % HERO_IMAGES.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next]);
 
   return (
-    <section className={`relative ${heightClass[height]} overflow-hidden`}>
-      {/* Background Image with Parallax */}
-      <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="absolute inset-0"
-      >
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-      </motion.div>
-
-      {/* Overlay */}
-      <div className={`absolute inset-0 ${overlayOpacity[overlay]}`} />
-
-      {/* Industrial texture overlay */}
-      <div className="absolute inset-0 opacity-20 mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
-        }}
-      />
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Images */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.95, opacity: 0 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={HERO_IMAGES[current].src}
+            alt={HERO_IMAGES[current].alt}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/60 to-dark/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/30" />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-        {showLogo && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Image
-              src="/images/logo.png"
-              alt="32Süd Logo"
-              width={120}
-              height={120}
-              className="mb-6"
-              priority
+      <div className="relative z-10 h-full flex items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 60 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="h-0.5 bg-gold mb-8"
             />
-          </motion.div>
-        )}
 
-        {title && (
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-[family-name:var(--font-heading)] text-5xl md:text-7xl lg:text-8xl text-text-light mb-4"
-          >
-            {title}
-          </motion.h1>
-        )}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-[family-name:var(--font-script)] text-gold text-2xl md:text-3xl italic mb-4"
+            >
+              Restaurant · Café · Bar
+            </motion.h2>
 
-        {subtitle && (
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-[family-name:var(--font-body)] text-lg md:text-xl text-text-light/80 max-w-2xl mb-10"
-          >
-            {subtitle}
-          </motion.p>
-        )}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="font-[family-name:var(--font-heading)] text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95] mb-6"
+            >
+              Genuss trifft{' '}
+              <span className="font-[family-name:var(--font-script)] italic text-gold">
+                Geschichte
+              </span>
+            </motion.h1>
 
-        {showCTA && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Button href="tel:+492261919693" variant="primary">
-              Tisch reservieren
-            </Button>
-            <Button href="/speisekarte" variant="ghost">
-              Speisekarte entdecken
-            </Button>
-          </motion.div>
-        )}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-gray text-lg md:text-xl leading-relaxed mb-10 max-w-lg"
+            >
+              Moderne bergische Küche in historischem Industrieambiente auf dem Steinmüllergelände Gummersbach.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+              className="flex flex-wrap gap-4"
+            >
+              <a href={`tel:${CONTACT.phoneIntl}`} className="btn-gold">
+                Tisch reservieren
+              </a>
+              <a href="/speisekarte" className="btn-gold-outline">
+                Speisekarte
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide navigation */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
+        <button onClick={prev} className="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/60 hover:text-gold hover:border-gold transition-all" aria-label="Vorheriges Bild">
+          <ChevronLeft size={18} />
+        </button>
+        <div className="flex gap-2">
+          {HERO_IMAGES.map((_, i) => (
+            <button key={i} onClick={() => setCurrent(i)} className={`transition-all duration-300 rounded-full ${i === current ? 'w-8 h-2 bg-gold' : 'w-2 h-2 bg-cream/30 hover:bg-cream/50'}`} aria-label={`Bild ${i + 1}`} />
+          ))}
+        </div>
+        <button onClick={next} className="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/60 hover:text-gold hover:border-gold transition-all" aria-label="Nächstes Bild">
+          <ChevronRight size={18} />
+        </button>
       </div>
 
       {/* Scroll indicator */}
-      {height === 'full' && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-10 border-2 border-text-light/40 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 bg-highlight rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 right-8 z-20 hidden lg:flex flex-col items-center gap-2"
+      >
+        <span className="text-cream/40 text-xs tracking-widest uppercase" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-0.5 h-8 bg-gradient-to-b from-gold to-transparent" />
+      </motion.div>
     </section>
   );
 }

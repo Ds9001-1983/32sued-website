@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter, Space_Grotesk } from 'next/font/google';
+import { Playfair_Display, Cormorant_Garamond } from 'next/font/google';
+import '@fontsource/afacad/400.css';
+import '@fontsource/afacad/500.css';
+import '@fontsource/afacad/600.css';
+import '@fontsource/afacad/700.css';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -12,15 +16,11 @@ const playfairDisplay = Playfair_Display({
   display: 'swap',
 });
 
-const inter = Inter({
-  variable: '--font-body',
+const cormorantGaramond = Cormorant_Garamond({
+  variable: '--font-script',
   subsets: ['latin'],
-  display: 'swap',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-accent',
-  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${cormorantGaramond.variable} antialiased`}
       >
         <Navbar />
         <main>{children}</main>

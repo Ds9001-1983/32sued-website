@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Phone, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Phone } from 'lucide-react';
 import { NAV_LINKS, CONTACT } from '@/lib/constants';
 
 export default function Navbar() {
@@ -14,9 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -26,79 +24,85 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    if (isMobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [isMobileOpen]);
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-primary/95 backdrop-blur-md shadow-lg py-3'
-            : 'bg-transparent py-5'
+            ? 'bg-dark/95 backdrop-blur-md border-b border-dark-border'
+            : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/images/logo.png"
-              alt="32Süd Logo"
-              width={50}
-              height={50}
-              className="transition-transform duration-300 group-hover:scale-105"
-            />
-            <span className="font-[family-name:var(--font-heading)] text-text-light text-xl hidden sm:block">
-              32Süd
-            </span>
-          </Link>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/images/logo.png"
+                alt="32Süd Logo"
+                width={48}
+                height={48}
+                className="rounded-full transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className="font-[family-name:var(--font-script)] text-2xl italic text-gold hidden sm:block">
+                32Süd
+              </span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`font-[family-name:var(--font-accent)] text-sm tracking-wider uppercase transition-colors duration-300 ${
-                  pathname === link.href
-                    ? 'text-highlight'
-                    : 'text-text-light/80 hover:text-highlight'
-                }`}
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-8">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-sm tracking-widest uppercase transition-colors duration-300 ${
+                    pathname === link.href
+                      ? 'text-gold'
+                      : 'text-cream/80 hover:text-gold'
+                  }`}
+                >
+                  {link.label}
+                  {pathname === link.href && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA + Mobile Toggle */}
+            <div className="flex items-center gap-4">
+              <a
+                href={`tel:${CONTACT.phoneIntl}`}
+                className="hidden md:flex btn-gold text-xs px-5 py-2.5 items-center gap-2 rounded-full"
               >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+                <Phone size={14} />
+                Reservierung
+              </a>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
-            <a
-              href={`tel:${CONTACT.phoneIntl}`}
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-highlight text-primary font-[family-name:var(--font-accent)] text-xs tracking-wider uppercase rounded-sm hover:bg-accent transition-all duration-300"
-            >
-              <Phone size={14} />
-              <span>Reservieren: {CONTACT.phone}</span>
-            </a>
-
-            <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden p-2 text-text-light hover:text-highlight transition-colors"
-              aria-label="Menü öffnen"
-            >
-              {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <button
+                onClick={() => setIsMobileOpen(!isMobileOpen)}
+                className="lg:hidden text-cream p-2"
+                aria-label="Menü öffnen"
+              >
+                {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -106,22 +110,20 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-30 bg-primary/98 backdrop-blur-lg flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
-              {NAV_LINKS.map((link, index) => (
+              {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  transition={{ delay: i * 0.1 }}
                 >
                   <Link
                     href={link.href}
-                    className={`font-[family-name:var(--font-heading)] text-3xl transition-colors duration-300 ${
-                      pathname === link.href
-                        ? 'text-highlight'
-                        : 'text-text-light hover:text-highlight'
+                    className={`font-[family-name:var(--font-script)] text-3xl italic ${
+                      pathname === link.href ? 'text-gold' : 'text-cream/70 hover:text-gold'
                     }`}
                   >
                     {link.label}
@@ -129,16 +131,15 @@ export default function Navbar() {
                 </motion.div>
               ))}
             </nav>
-
             <motion.a
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
+              transition={{ delay: 0.5 }}
               href={`tel:${CONTACT.phoneIntl}`}
-              className="mt-12 inline-flex items-center gap-2 px-8 py-3.5 bg-highlight text-primary font-[family-name:var(--font-accent)] text-sm tracking-wider uppercase rounded-sm"
+              className="btn-gold mt-12 inline-flex items-center gap-2"
             >
               <Phone size={16} />
-              <span>Reservieren: {CONTACT.phone}</span>
+              Jetzt reservieren
             </motion.a>
           </motion.div>
         )}
