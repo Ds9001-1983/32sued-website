@@ -18,66 +18,32 @@ const sections = [
   {
     id: 'hero',
     label: 'Start',
-    component: (
-      <div className="h-screen h-[100dvh] w-full">
-        <Hero />
-      </div>
-    ),
+    component: <Hero />,
   },
   {
     id: 'about',
     label: 'Über uns',
-    component: (
-      <div className="h-screen h-[100dvh] w-full flex items-center overflow-hidden bg-dark">
-        <div className="w-full max-h-screen overflow-y-auto scrollbar-hide">
-          <AboutSection />
-        </div>
-      </div>
-    ),
+    component: <AboutSection />,
   },
   {
     id: 'menu',
     label: 'Speisekarte',
-    component: (
-      <div className="h-screen h-[100dvh] w-full flex items-center overflow-hidden bg-dark-surface">
-        <div className="w-full">
-          <BestSelling />
-        </div>
-      </div>
-    ),
+    component: <BestSelling />,
   },
   {
     id: 'catering',
     label: 'Catering',
-    component: (
-      <div className="h-screen h-[100dvh] w-full flex items-center overflow-hidden">
-        <div className="w-full">
-          <CateringTeaser />
-        </div>
-      </div>
-    ),
+    component: <CateringTeaser />,
   },
   {
     id: 'testimonials',
     label: 'Bewertungen',
-    component: (
-      <div className="h-screen h-[100dvh] w-full flex items-center overflow-hidden bg-dark">
-        <div className="w-full">
-          <Testimonials />
-        </div>
-      </div>
-    ),
+    component: <Testimonials />,
   },
   {
     id: 'contact',
     label: 'Kontakt',
-    component: (
-      <div className="h-screen h-[100dvh] w-full flex items-center overflow-hidden bg-dark-surface">
-        <div className="w-full max-h-screen overflow-y-auto scrollbar-hide">
-          <ContactSection />
-        </div>
-      </div>
-    ),
+    component: <ContactSection />,
   },
 ];
 
