@@ -53,6 +53,49 @@ body {
   color: var(--color-dark);
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   FULLPAGE SCROLL - MOBILE (CSS Snap)
+   ======================================== */
+
+.fullpage-mobile {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.fullpage-section-mobile {
+  min-height: 100vh;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* On mobile, ensure sections fill the viewport */
+@media (max-width: 1023px) {
+  .fullpage-section-mobile > div {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* ========================================
+   TYPOGRAPHY & DECORATIVE ELEMENTS
+   ======================================== */
+
 /* Script heading style */
 .script-heading {
   font-family: var(--font-script);
@@ -68,6 +111,22 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Decorative gold line */
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+/* Sparkle decoration */
+.sparkle {
+  color: var(--color-gold);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
 
 /* Gold button */
 .btn-gold {
@@ -109,17 +168,9 @@ body {
   box-shadow: 0 8px 30px rgba(184, 135, 57, 0.3);
 }
 
-/* Decorative gold line */
-.gold-line {
-  width: 60px;
-  height: 2px;
-  background: var(--color-gold);
-}
-
-/* Sparkle decoration */
-.sparkle {
-  color: var(--color-gold);
-}
+/* ========================================
+   CARDS & CONTAINERS
+   ======================================== */
 
 /* Dark card with subtle border */
 .dark-card {
@@ -143,6 +194,40 @@ body {
   background-size: cover;
 }
 
+/* Glow effect */
+.glow-gold {
+  box-shadow: 0 0 60px rgba(184, 135, 57, 0.15);
+}
+
+/* Circular image */
+.circular-image {
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+/* ========================================
+   NAVIGATION DOTS
+   ======================================== */
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gray-dark);
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: var(--color-gold);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
 /* Smooth image reveal */
 @keyframes imageReveal {
   from {
@@ -157,33 +242,6 @@ body {
 
 .image-reveal {
   animation: imageReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* Glow effect */
-.glow-gold {
-  box-shadow: 0 0 60px rgba(184, 135, 57, 0.15);
-}
-
-/* Circular image */
-.circular-image {
-  border-radius: 50%;
-  overflow: hidden;
-  aspect-ratio: 1;
-}
-
-/* Navigation dot */
-.nav-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-gray-dark);
-  transition: all 0.3s ease;
-}
-
-.nav-dot.active {
-  background: var(--color-gold);
-  width: 24px;
-  border-radius: 4px;
 }
 
 /* Page transition */
@@ -214,3 +272,55 @@ body {
 .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
 .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ========================================
+   FULLPAGE SECTION TRANSITIONS
+   ======================================== */
+
+/* Curtain reveal effect for sections */
+@keyframes curtainReveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.curtain-reveal {
+  animation: curtainReveal 1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* Scale fade for section transitions */
+@keyframes scaleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-fade-in {
+  animation: scaleFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Parallax text effect */
+@keyframes parallaxText {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+    letter-spacing: 0.5em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.1em;
+  }
+}
+
+.parallax-text {
+  animation: parallaxText 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
