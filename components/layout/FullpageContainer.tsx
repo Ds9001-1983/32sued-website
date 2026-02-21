@@ -35,7 +35,7 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
   const goToSection = useCallback((index: number, force = false) => {
     if (index < 0 || index >= sections.length || index === activeIndex) return;
     const now = Date.now();
-    if (!force && (isAnimating || now - lastTransitionTime.current < 900)) return;
+    if (!force && (isAnimating || now - lastTransitionTime.current < 600)) return;
     
     setDirection(index > activeIndex ? 1 : -1);
     setIsAnimating(true);
@@ -66,7 +66,7 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
       }, 200);
       
       // Trigger only when accumulated enough
-      const threshold = 80;
+      const threshold = 50;
       if (wheelAccumulator.current > threshold) {
         wheelAccumulator.current = 0;
         goNext();
@@ -126,6 +126,10 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
     if (isMobile) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't hijack keys when user is typing in an input or textarea
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
         e.preventDefault();
         goNext();
@@ -206,7 +210,7 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
             aria-label={`Gehe zu ${section.label}`}
           >
             {/* Label tooltip */}
-            <span className="absolute right-7 whitespace-nowrap text-[10px] text-cream/0 group-hover:text-cream/80 transition-all duration-300 font-medium tracking-wider uppercase">
+            <span className="absolute right-7 whitespace-nowrap text-xs text-cream/0 group-hover:text-cream/80 transition-all duration-300 font-medium tracking-wider uppercase">
               {section.label}
             </span>
             {/* Dot */}
@@ -235,7 +239,7 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
             transition={{ duration: 0.5 }}
           />
         </div>
-        <span className="text-gray-dark text-[10px]">
+        <span className="text-gray-dark text-xs">
           {String(sections.length).padStart(2, '0')}
         </span>
       </div>
@@ -247,10 +251,10 @@ export default function FullpageContainer({ sections }: FullpageContainerProps) 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 2, duration: 0.5 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
           >
-            <span className="text-cream/40 text-[9px] tracking-[0.3em] uppercase">Scroll</span>
+            <span className="text-cream/40 text-xs tracking-[0.3em] uppercase">Scroll</span>
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
