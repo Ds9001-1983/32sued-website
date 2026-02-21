@@ -21,13 +21,10 @@ export default function BestSelling() {
           <p className="text-gray max-w-2xl mx-auto text-xs lg:text-sm">
             Entdecken Sie unsere beliebtesten Gerichte – frisch zubereitet mit regionalen Zutaten und kulinarischer Leidenschaft.
           </p>
-          <a href="/speisekarte" className="btn-gold-outline inline-block mt-3 text-xs !py-2 !px-5">
-            Speisekarte ansehen
-          </a>
         </AnimatedSection>
 
-        {/* Food Grid */}
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-6 max-w-5xl mx-auto">
+        {/* Food Grid - 3 columns with larger rectangular images */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto">
           {FOOD_IMAGES.map((item, i) => (
             <AnimatedSection key={i} delay={i * 0.08}>
               <motion.div
@@ -35,23 +32,29 @@ export default function BestSelling() {
                 transition={{ duration: 0.3 }}
                 className="group text-center"
               >
-                {/* Circular image */}
-                <div className="relative w-full aspect-square rounded-full overflow-hidden mb-2 border-2 border-dark-border group-hover:border-gold/50 transition-all duration-500 max-w-[120px] lg:max-w-[150px] mx-auto">
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-2.5 border border-dark-border group-hover:border-gold/40 transition-all duration-500">
                   <Image
                     src={item.src}
                     alt={item.alt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 30vw, 15vw"
+                    sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-dark/20 group-hover:bg-dark/0 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent group-hover:from-dark/20 transition-all duration-500" />
                 </div>
-                <h3 className="text-cream text-[11px] lg:text-xs font-medium mb-0.5">{item.name}</h3>
-                <p className="text-gold text-[11px] lg:text-xs font-[family-name:var(--font-script)] italic">{item.price}</p>
+                <h3 className="text-cream text-sm font-medium mb-0.5">{item.name}</h3>
+                <p className="text-gold text-sm font-[family-name:var(--font-script)] italic">{item.price}</p>
               </motion.div>
             </AnimatedSection>
           ))}
         </div>
+
+        {/* CTA below the grid */}
+        <AnimatedSection className="text-center mt-6 lg:mt-8" delay={0.5}>
+          <a href="/speisekarte" className="btn-gold-outline inline-block text-xs">
+            Speisekarte ansehen
+          </a>
+        </AnimatedSection>
       </div>
     </section>
   );
