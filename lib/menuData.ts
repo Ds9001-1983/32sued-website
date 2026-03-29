@@ -25,33 +25,31 @@ export const mittagskarte: MenuSection = {
       name: 'Mittagsgerichte',
       items: [
         {
-          name: 'Kalbstafelspitz',
-          description: 'mit Meerrettich, Gartengemüse und jungen Kartoffeln',
-          price: '18,50€',
+          name: 'Gefüllte Maispoularde',
+          description: 'auf Tomaten-Gemüserisotto',
+          price: '18,00€',
         },
         {
-          name: 'Tagliatelle "Funghi"',
-          description: 'mit Wildkräutern und Grana Padano',
-          price: '14,00€',
+          name: 'Thai-Curry',
+          description: 'mit Garnelen, Gemüse und Basmatireis',
+          price: '17,00€',
+        },
+        {
+          name: 'Spätzle-Pilzrahmpfanne',
+          description: 'mit Zwiebeln und Rauke',
+          price: '12,00€',
           tags: ['vegetarisch'],
-        },
-        {
-          name: 'Caldeirada',
-          description:
-            'Portugiesischer Fischeintopf mit Muscheln, saisonale Fischauswahl, Gemüse, Chili und Kartoffeln',
-          price: '17,50€',
         },
         {
           name: 'Bowl der Woche',
           description:
-            'mit würzigem Hack, Couscous, Tomate, Gurke, roten Zwiebeln, Chiffonade, Jalapeños, Bacon, Cheddar und Smoky-BBQ-Sauce',
-          price: '16,50€',
+            'mit Sushireis, Pulled Lachs, Brokkoli, Tomate, Möhre, Gurke, Paprika, rote Zwiebeln, Sesam und Teriyaki Sauce',
+          price: '16,00€',
         },
         {
           name: 'Flammkuchen der Woche',
-          description: 'mit Mozzarella, Tomate und Pesto',
-          price: '10,00€',
-          tags: ['vegetarisch'],
+          description: 'mit Speck, Lauch und Zwiebeln',
+          price: '11,00€',
         },
         {
           name: 'Der Burger',
@@ -95,28 +93,34 @@ export const abendkarte: MenuSection = {
       name: 'Vorspeisen & Suppen',
       items: [
         {
+          name: 'Parmesancremesuppe',
+          description: 'mit Tomatenconfit und Basilikumöl',
+          price: '8,50€',
+          tags: ['vegetarisch'],
+        },
+        {
+          name: 'In Hibiskus gebeizter Lachs',
+          description:
+            'mit Meerrettich, Süßkartoffelrösti und Wildkräutersalat',
+          price: '12,00€',
+        },
+        {
           name: 'Handgeklopftes Carpaccio vom Rinderfilet',
           description: 'mit Zitrone, Kapern, Parmesan und Rucola',
           price: '18,50€',
         },
         {
-          name: 'In Sternanis gebeizter Lachs',
-          description:
-            'mit Apfelrelish, Reibekuchen und Wildkräutersalat in Orangendressing',
-          price: '11,00€',
-        },
-        {
           name: 'Tapasplatte (ab 2 Pers.)',
           description:
-            'Bruschetta, marinierte Oliven, Albondigas, Honig-Balsamico Paprika, Manchego, Pimientos de Padrón, marinierte Zucchini, Papas Arrugadas, Chili-Knoblauch Garnelen, Aioli, Tomatenaufstrich und Ciabatta',
+            'Bruschetta mit Mozzarella, marinierte Oliven, Albondigas, Honig-Balsamico Paprika Manchego, Pimientos de Padrón, in Thymian und Zitrone marinierte Zucchini, Papas Arrugadas, Chili-Knoblauch Garnelen, Aioli, Zitronen-Feta-Thymian Dip und Ciabatta',
           price: '17,00€ p.P.',
         },
         {
           name: 'Ciabatta',
           description:
-            'mit hausgemachter Aioli und mediterranem Tomatenaufstrich',
+            'mit hausgemachter Aioli und Zitronen-Feta-Thymian Dip',
           price: '5,00€',
-          tags: ['vegan'],
+          tags: ['vegetarisch'],
         },
         {
           name: 'Bruschetta',
@@ -127,9 +131,9 @@ export const abendkarte: MenuSection = {
         },
         {
           name: 'Pimientos de Padrón',
-          description: 'mit mediterranem Tomatenaufstrich',
+          description: 'mit Zitronen-Feta-Thymian Dip',
           price: '9,50€',
-          tags: ['vegan'],
+          tags: ['vegetarisch'],
         },
         {
           name: 'Zitronengras-Currysuppe',
@@ -145,18 +149,20 @@ export const abendkarte: MenuSection = {
         {
           name: 'Großer Salatteller 32 Süd',
           description:
-            'Blattsalate, Schafskäse, Oliven, getrocknete Tomaten, Sonnenblumenkerne, Croutons',
+            'Blattsalate in Balsamico-Vinaigrette, Möhre, Gurke, Paprika, Tomate, Zwiebel, Schafskäse, Oliven, getrockneten Tomaten, Sonnenblumenkernen und Croutons',
           price: '14,00€',
           tags: ['vegetarisch'],
         },
         {
           name: 'Großer Salatteller mit Hähnchenbrust',
-          description: 'mit Estragonbutter und Teriyaki Sauce',
+          description:
+            'Blattsalate in Balsamico-Vinaigrette, Möhre, Gurke, Paprika, Tomate, Zwiebel, mit in Estragonbutter gebratener Hähnchenbrust und Teriyaki Sauce',
           price: '18,00€',
         },
         {
           name: 'Großer Salatteller mit Riesengarnelen',
-          description: 'mit Knoblauch und Rosmarin gebraten',
+          description:
+            'Blattsalate in Balsamico-Vinaigrette, Möhre, Gurke, Paprika, Tomate, Zwiebel, Riesengarnelen mit Knoblauch und Rosmarin gebraten',
           price: '22,00€',
         },
       ],
@@ -165,10 +171,10 @@ export const abendkarte: MenuSection = {
       name: 'Vegetarisch',
       items: [
         {
-          name: 'Rote Beete Ravioli',
+          name: 'Trüffel-Pasta',
           description:
-            'gefüllt mit Camembert, in Walnussbutter gebraten mit Rucola und Orangen-Velouté',
-          price: '19,50€',
+            'Tagliatelle mit Sommertrüffel, Weißwein, Parmesan und Wildkräuter',
+          price: '22,50€',
           tags: ['vegetarisch'],
         },
         {
@@ -183,9 +189,9 @@ export const abendkarte: MenuSection = {
       name: 'Aus dem Meer',
       items: [
         {
-          name: 'Gebratenes Lachsfilet',
+          name: 'Gebratenes Lachsfilet mit Kräuterkruste',
           description:
-            'mit Topinambur-Velouté, Romanesco und Fondantkartoffeln',
+            'auf Vanille-Ratatouille und Trüffelkartoffelpüree mit Rieslingschaum',
           price: '28,00€',
         },
       ],
@@ -194,9 +200,9 @@ export const abendkarte: MenuSection = {
       name: 'Vom Land',
       items: [
         {
-          name: 'Rumpsteak mit Nuss-Paprikakruste',
+          name: '250g Rumpsteak',
           description:
-            'Sherry Sauce, Rosmarinkartoffeln und bunter Salat in Balsamico Dressing',
+            'dazu Chimichurri, Zuckerschoten mit gerösteten Mandeln und Ofenkartoffel mit Paprika-Limettenbutter',
           price: '40,00€',
         },
         {
@@ -208,25 +214,24 @@ export const abendkarte: MenuSection = {
         {
           name: 'Original Wiener Schnitzel',
           description:
-            'mit Zitrone, Preiselbeeren und lauwarmem Kartoffel-Gurkensalat',
+            'mit Zitrone, Preiselbeeren und lauwarmen Kartoffel-Gurkensalat',
           price: '30,00€',
         },
       ],
     },
     {
-      name: 'Burger',
+      name: 'Unsere Burger',
       items: [
         {
-          name: 'Veggie Burger',
+          name: 'Pulled Turkey Burger',
           description:
-            'Haferflockenpatty, Brioche Bun, irischer Cheddar, frischer Salat, BBQ-Sauce und Coleslaw',
-          price: '13,00€',
-          tags: ['vegetarisch'],
+            'Karibisch gewürztes Putenfleisch, Brioche Bun, frischer Salat und Mango-Ananassalsa dazu Süßkartoffel-Fries und Chili-Limetten Mayo',
+          price: '22,00€',
         },
         {
           name: 'Der Burger',
           description:
-            '100% Beef (180g), Brioche Bun, irischer Cheddar, Baconjam, BBQ Sauce und Coleslaw',
+            '100% Beef (180g), Brioche Bun, irischer Cheddar, frischer Salat, Tomaten, Röstzwiebeln, Gewürzgurken, Baconjam, BBQ Sauce und Coleslaw',
           price: '15,00€',
         },
       ],
@@ -235,13 +240,13 @@ export const abendkarte: MenuSection = {
       name: 'Dessert',
       items: [
         {
-          name: 'Schwarzwälder Kirsch Bowl',
+          name: 'Schokoladenfondant',
           description:
-            'mit Brownies, Haselnuss, Kirschsorbet, Vanille und Sauerkirschen',
-          price: '9,50€',
+            'mit Joghurt, Beeren, Honig und Haselnuss',
+          price: '10,00€',
         },
         {
-          name: 'Eiskreationen',
+          name: 'Unsere Eiskreationen',
           description: 'Zitrone-Thymian / Mango-Chili / Mandarine-Koriander',
           price: '–',
         },
@@ -252,14 +257,14 @@ export const abendkarte: MenuSection = {
 
 export const weeklyHighlights: MenuItem[] = [
   {
-    name: 'Kalbstafelspitz',
-    description: 'mit Meerrettich, Gartengemüse und jungen Kartoffeln',
-    price: '18,50€',
+    name: 'Gefüllte Maispoularde',
+    description: 'auf Tomaten-Gemüserisotto',
+    price: '18,00€',
   },
   {
-    name: 'Caldeirada',
-    description: 'Portugiesischer Fischeintopf mit Muscheln',
-    price: '17,50€',
+    name: 'Thai-Curry',
+    description: 'mit Garnelen, Gemüse und Basmatireis',
+    price: '17,00€',
   },
   {
     name: 'Der Burger',
