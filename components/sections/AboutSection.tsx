@@ -26,7 +26,7 @@ export default function AboutSection() {
               {/* Floating accent card */}
               <div className="absolute -bottom-3 -right-3 bg-dark-card border border-dark-border rounded-xl p-3 lg:p-4 shadow-2xl hidden md:block">
                 <p className="font-[family-name:var(--font-script)] text-gold text-xl lg:text-2xl italic">Seit 2013</p>
-                <p className="text-gray text-[10px] lg:text-xs mt-0.5">auf dem Steinmüllergelände</p>
+                <p className="text-gray text-xs mt-0.5">auf dem Steinmüllergelände</p>
               </div>
               {/* Gold border accent */}
               <div className="absolute -top-2 -left-2 w-14 h-14 border-l-2 border-t-2 border-gold/30 rounded-tl-2xl" />
@@ -52,7 +52,7 @@ export default function AboutSection() {
                 <p className="font-[family-name:var(--font-script)] text-cream/90 text-base lg:text-lg italic leading-relaxed">
                   &ldquo;Gutes Essen ist nicht nur Nahrung – es ist ein Erlebnis, das Menschen zusammenbringt.&rdquo;
                 </p>
-                <p className="text-gold text-[10px] mt-1.5 tracking-wider uppercase">
+                <p className="text-gold text-xs mt-1.5 tracking-wider uppercase">
                   Das Team vom 32Süd
                 </p>
               </div>

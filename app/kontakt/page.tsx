@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, Clock, Facebook, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, ExternalLink } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import ContactForm from '@/components/sections/ContactForm';
@@ -59,10 +59,13 @@ export default function KontaktPage() {
                   </div>
 
                   <div className="dark-card p-5 flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0"><Facebook size={20} className="text-gold" /></div>
+                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0"><Instagram size={20} className="text-gold" /></div>
                     <div>
                       <h3 className="text-cream text-sm font-medium mb-1">Social Media</h3>
-                      <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors text-sm">Facebook</a>
+                      <div className="flex items-center gap-4">
+                        <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors text-sm">Instagram</a>
+                        <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors text-sm">Facebook</a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -105,7 +108,7 @@ export default function KontaktPage() {
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2515.8!2d7.5653!3d51.0264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bede3b5c6e5555%3A0x0!2sSteinm%C3%BCllerallee+10%2C+51643+Gummersbach!5e0!3m2!1sde!2sde!4v1"
                     width="100%" height="100%"
-                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
+                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.7) contrast(1.2)' }}
                     allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="32Süd Standort"
                   />
                 </div>

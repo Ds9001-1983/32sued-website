@@ -60,12 +60,12 @@ export const HERO_IMAGES = [
 ] as const;
 
 export const FOOD_IMAGES = [
-  { src: '/images/instagram/food-plated-1.jpg', alt: 'Fein angerichtetes Gericht', name: 'Kalbstafelspitz', price: '18,50€' },
-  { src: '/images/instagram/food-steak-1.jpg', alt: 'Rumpsteak mit Beilagen', name: 'Rumpsteak', price: '35,00€' },
+  { src: '/images/instagram/food-plated-1.jpg', alt: 'Fein angerichtetes Gericht', name: 'Gefüllte Maispoularde', price: '18,00€' },
+  { src: '/images/instagram/food-steak-1.jpg', alt: 'Rumpsteak mit Beilagen', name: '250g Rumpsteak', price: '40,00€' },
   { src: '/images/instagram/food-plated-2.jpg', alt: 'Kreative Vorspeise', name: 'Carpaccio', price: '18,50€' },
   { src: '/images/instagram/food-burger-1.jpg', alt: 'Der Burger', name: 'Der Burger', price: '15,00€' },
-  { src: '/images/gallery/food-2.jpg', alt: 'Saisonales Gericht', name: 'Caldeirada', price: '17,50€' },
-  { src: '/images/gallery/food-3.jpg', alt: 'Dessert Kreation', name: 'Dessert', price: '9,50€' },
+  { src: '/images/gallery/food-2.jpg', alt: 'Saisonales Gericht', name: 'Thai-Curry', price: '17,00€' },
+  { src: '/images/gallery/food-3.jpg', alt: 'Dessert Kreation', name: 'Schokoladenfondant', price: '10,00€' },
 ] as const;
 
 export const GALLERY_IMAGES = [

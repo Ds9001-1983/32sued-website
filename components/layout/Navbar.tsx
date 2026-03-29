@@ -13,6 +13,9 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href));
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -63,13 +66,13 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`relative text-sm tracking-widest uppercase transition-colors duration-300 ${
-                    pathname === link.href
+                    isActive(link.href)
                       ? 'text-gold'
                       : 'text-cream/80 hover:text-gold'
                   }`}
                 >
                   {link.label}
-                  {pathname === link.href && (
+                  {isActive(link.href) && (
                     <motion.div
                       layoutId="activeNav"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
@@ -84,7 +87,7 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <a
                 href={`tel:${CONTACT.phoneIntl}`}
-                className="hidden md:flex btn-gold text-xs px-5 py-2.5 items-center gap-2 rounded-full"
+                className="hidden lg:flex btn-gold text-xs px-5 py-2.5 items-center gap-2 rounded-full"
               >
                 <Phone size={14} />
                 Reservierung
@@ -112,7 +115,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <nav className="flex flex-col items-center gap-6">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -122,9 +125,9 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`font-[family-name:var(--font-script)] text-3xl italic ${
-                      pathname === link.href ? 'text-gold' : 'text-cream/70 hover:text-gold'
-                    }`}
+                    className={`font-[family-name:var(--font-heading)] text-2xl tracking-wide ${
+                      isActive(link.href) ? 'text-gold' : 'text-cream/70 hover:text-gold'
+                    } transition-colors duration-300`}
                   >
                     {link.label}
                   </Link>
@@ -144,6 +147,15 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Mobile FAB - Sticky Reservierung Button */}
+      <a
+        href={`tel:${CONTACT.phoneIntl}`}
+        className="fixed bottom-6 right-6 z-50 lg:hidden w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg shadow-gold/30 hover:bg-gold-light transition-all duration-300 active:scale-95"
+        aria-label="Jetzt reservieren"
+      >
+        <Phone size={20} className="text-dark" />
+      </a>
     </>
   );
 }
