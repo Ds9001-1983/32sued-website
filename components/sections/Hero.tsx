@@ -19,6 +19,8 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    // Bewusst nach dem Mount: startet die Einblend-Animation erst im Browser.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoaded(true);
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
