@@ -115,8 +115,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Slide navigation */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 md:gap-6">
+      {/* Slide navigation - positioned bottom-left to avoid overlap with scroll hint */}
+      <div className="absolute bottom-6 md:bottom-8 left-6 lg:left-8 z-20 flex items-center gap-4 md:gap-6">
         <button onClick={prev} className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/60 hover:text-gold hover:border-gold transition-all" aria-label="Vorheriges Bild">
           <ChevronLeft size={16} />
         </button>

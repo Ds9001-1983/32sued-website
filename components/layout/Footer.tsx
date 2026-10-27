@@ -79,9 +79,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-dark text-xs">&copy; {new Date().getFullYear()} {CONTACT.company}. Alle Rechte vorbehalten.</p>
           <p className="text-gray-dark text-xs">
-            Made with ❤️ by{' '}
+            Made by{' '}
             <a href="https://superbrand.marketing" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors">SUPERBRAND.marketing</a>
-            {' '}– Dein Superheld für deine Werbung.
           </p>
         </div>
       </div>

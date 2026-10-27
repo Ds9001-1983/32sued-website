@@ -28,7 +28,7 @@ export default function RestaurantPage() {
             <AnimatedSection direction="left">
               <div className="gold-line mb-6" />
               <h2 className="font-[family-name:var(--font-script)] text-4xl md:text-5xl italic text-gold mb-4">Unsere Geschichte</h2>
-              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-white mb-8">Vom Dampfkessel zum Genuss</h3>
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-white mb-8">Geschichte trifft Genuss</h3>
               <div className="space-y-4 text-gray leading-relaxed text-lg">
                 <p>
                   Wo einst die Firma Steinmüller Dampfkessel und Industrieanlagen fertigte, servieren wir heute kulinarische Highlights. Die authentischen Überbleibsel der alten Fabrikhalle – rauer Beton, massive Stahlträger, großzügige Fensterfronten – bilden das einzigartige Ambiente, in dem Industriegeschichte und moderne Gastronomie verschmelzen.

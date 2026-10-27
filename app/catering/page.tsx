@@ -76,9 +76,11 @@ export default function CateringPage() {
       <section className="py-16 bg-dark">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <p className="font-[family-name:var(--font-script)] text-cream/90 text-xl md:text-2xl italic leading-relaxed">
-              &ldquo;Feiern Sie in unseren Räumlichkeiten auf dem Steinmüllergelände, in der angrenzenden Halle 32, oder nutzen Sie unseren Außer-Haus-Service an Ihrem Wunschort.&rdquo;
-            </p>
+            <div className="dark-card p-8 md:p-12 border-l-2 border-l-gold">
+              <p className="font-[family-name:var(--font-script)] text-cream/90 text-xl md:text-2xl italic leading-relaxed">
+                &ldquo;Feiern Sie in unseren Räumlichkeiten auf dem Steinmüllergelände, in der angrenzenden Halle 32, oder nutzen Sie unseren Außer-Haus-Service an Ihrem Wunschort.&rdquo;
+              </p>
+            </div>
           </AnimatedSection>
         </div>
       </section>
