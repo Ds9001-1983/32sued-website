@@ -35,10 +35,11 @@ export const siteMetadata: Metadata = {
       },
     ],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  // Entwurf: noindex, bis NEXT_PUBLIC_ALLOW_INDEXING=true gesetzt ist (dazu X-Robots-Tag in next.config.ts).
+  robots:
+    process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true"
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
 };
 
 export const restaurantJsonLd = {
